@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            margin: 0;
+        }
+
+        body,
+        html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        input {
+            width: 95%;
+            flex: 1;
+            border-radius: 6px;
+            outline: none;
+            padding-left: 10px;
+            border: 1;
+        }
+        button{
+            border: 0;
+            padding: 0;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            color: aliceblue;
+            background: red
+        }
+
+        .content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .content-layout-div1 {
+            width: 100%;
+            flex: 7;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .content-layout-div1 div {
+            flex: 1;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-layout-div1 p {
+            font-size: 10px;
+        }
+
+        .content-layout-div2 {
+            width: 100%;
+            flex: 3;
+        }
+
+        #yanzhengma-div {
+            padding: 0;
+            flex: 1;
+
+            display: flex;
+            flex-direction: row;
+        }
+
+        #yanzhengma-div div {
+            flex: 1;
+        }
+        .Submit{
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="content-layout-div1">
+            <div>
+                <p>姓名：</p>
+                <input type="text" name="" id="" placeholder="姓名">
+            </div>
+            <div>
+                <p>手机：</p>
+                <input type="text" name="" id="" placeholder="手机号码">
+            </div>
+            <div>
+                <p>手机验证码：</p>
+                <div id="yanzhengma-div">
+                    <div style="padding-left: 0 ">
+                        <input type="text" name="" id="">
+                    </div>
+                    <div style="padding-right: 0 ">
+                        <button>获取验证码</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>手机：</p>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <button class="Submit">提交</button>
+            </div>
+        </div>
+        <div class="content-layout-div2">
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            border-radius: 3px;
+            outline: none;
+            padding-left: 10px;
+        }
+        button{
+            border-radius: 3px;
+        }
+        .yuanshuzu{
+            width: 200px;
+            height: 40px;
+            margin-bottom: 20px;
+            padding-left: 0px;
+        }
+        .one-button{
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 3px;
+            background: #ef5664;
+            font-size:15px;
+            color: aliceblue;
+            margin: 0 10px;
+        }
+        .box{
+            display:flex;
+            flex-direction: column;            
+        }
+
+        .one-content{
+            display:flex;
+            flex-direction: row;
+            text-align: center;
+            line-height: 30px;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h5>原数组</h5>
+        <input type="text" readonly="readonly" class="yuanshuzu"value="1,2,2,'a','a',3,4,5,5,6" >
+        <div class="one-content">
+            <input type="text" readonly="readonly" id="one-input" value="">
+            <div  id="one-button" class="one-button">点击转换</div>
+            第一种使用es6 set
+
+        </div>
+    </div>
+    <script>
+        //数组
+        var arr = [1, 2, 2, "a", "a", 3, 4, 5, 5, 6];
+
+        //使用es6的Set
+        var es6set = (arr) => {
+            return [...new Set(arr)];
+        }
+
+        var buttonDiv1 = document.getElementById("one-button");
+        var input1 = document.getElementById("one-input");
+
+
+        buttonDiv1.onclick  = function(){
+            var string = es6set(arr).toString()
+            input1.value =string;
+
+        }
+            
+
+    </script>
+
+</body>
+
+</html>

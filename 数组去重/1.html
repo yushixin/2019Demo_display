@@ -7,76 +7,263 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        input{
+        input {
             border-radius: 3px;
             outline: none;
             padding-left: 10px;
         }
-        button{
+
+        button {
             border-radius: 3px;
         }
-        .yuanshuzu{
+
+        .yuanshuzu {
             width: 200px;
             height: 40px;
             margin-bottom: 20px;
             padding-left: 0px;
         }
-        .one-button{
+
+        .box {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .one-content {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+
+        .one-button-style {
             width: 60px;
             height: 30px;
             text-align: center;
             line-height: 30px;
             border-radius: 3px;
             background: #ef5664;
-            font-size:15px;
+            font-size: 15px;
             color: aliceblue;
             margin: 0 10px;
         }
-        .box{
-            display:flex;
-            flex-direction: column;            
-        }
 
-        .one-content{
-            display:flex;
-            flex-direction: row;
+
+        .one-show-style {
+            width: 100px;
+            height: 30px;
             text-align: center;
             line-height: 30px;
+            border-radius: 3px;
+            background: #ef5664;
+            font-size: 5px;
+            color: aliceblue;
+            margin: 0 10px;
         }
-    
+
+        .one-show-style2 {
+            background: red;
+
+        }
+
+        .left {
+            flex: 4;
+        }
+
+        .right {
+            flex: 6;
+        }
+
+        .displaynone {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-    <div class="box">
-        <h5>原数组</h5>
-        <input type="text" readonly="readonly" class="yuanshuzu"value="1,2,2,'a','a',3,4,5,5,6" >
-        <div class="one-content">
-            <input type="text" readonly="readonly" id="one-input" value="">
-            <div  id="one-button" class="one-button">点击转换</div>
-            第一种使用es6 set
+    <p>原数组</p>
+    <input type="text" readonly="readonly" class="yuanshuzu" value="1,2,4,9,'a','a',2,3,5,6,5">
+    <p>结果</p>
 
+    <input type="text" readonly="readonly" class="yuanshuzu " id="one-input" value="">
+
+    <div class="box">
+        <div class="left">
+            <div class="one-content">
+                <div id="one-button" class="one-button-style">点击转换</div>
+                <div id="show-code-0" class="one-show-style" data-my="show-code-div-1">划入显示代码</div>
+                第1种 使用es6 set
+            </div>
+            <div class="one-content">
+                <div id="two-button" class="one-button-style">点击转换</div>
+                <div id="show-code-1" class="one-show-style" data-my="show-code-div-2">划入显示代码</div>
+                第2种 最简单数组去重法
+            </div>
+            <div class="one-content">
+                <div id="3-button" class="one-button-style">点击转换</div>
+                <div id="show-code-2" class="one-show-style" data-my="show-code-div-3">划入显示代码</div>
+                第3种 排序后相邻去除法
+            </div>
+            <div class="one-content">
+                <div id="4-button" class="one-button-style">点击转换</div>
+                <div id="show-code-3" class="one-show-style" data-my="show-code-div-4">划入显示代码</div>
+                第4种 数组下标法
+            </div>
+            <div class="one-content">
+                <div id="5-button" class="one-button-style">点击转换</div>
+                <div id="show-code-4" class="one-show-style" data-my="show-code-div-5">划入显示代码</div>
+                第5种 优化遍历数组法
+            </div>
         </div>
+        <div class="right">
+            <div class="show-code-div-1 displaynone">
+                <h5>代码：</h5>
+                <img src="./image/1 es6 set.png" alt="">
+            </div>
+            <div class="show-code-div-2 displaynone">
+                <h5>代码：</h5>
+                <img src="./image/2最简单的数组去重.png" alt="">
+            </div>
+            <div class="show-code-div-3 displaynone">
+                <h5>代码：</h5>
+                <img src="./image/3排序后相邻去重.png" alt="">
+            </div>
+            <div class="show-code-div-4 displaynone">
+                <h5>代码：</h5>
+                <img src="./image/4.png" alt="">
+            </div>
+            <div class="show-code-div-5 displaynone">
+                <h5>代码：</h5>
+                <img src="./image/5.png" alt="">
+            </div>
+        </div>
+
     </div>
     <script>
         //数组
-        var arr = [1, 2, 2, "a", "a", 3, 4, 5, 5, 6];
+        var array = [1, 2, 4, 9, "a", "a", 2, 3, 5, 6, 5];
+
+
+
 
         //使用es6的Set
         var es6set = (arr) => {
             return [...new Set(arr)];
         }
 
-        var buttonDiv1 = document.getElementById("one-button");
-        var input1 = document.getElementById("one-input");
-
-
-        buttonDiv1.onclick  = function(){
-            var string = es6set(arr).toString()
-            input1.value =string;
-
+        //最简单数组去重法：新建一新数组，遍历传入数组，值不在新数组就push进该新数组中
+        function SimplestArrayReduplication(arr) {
+            var temp = []; //一个新的临时数组
+            for (var i = 0; i < arr.length; i++) {
+                if (temp.indexOf(arr[i]) == -1) {
+                    temp.push(arr[i]);
+                }
+            }
+            return temp;
         }
-            
+
+        //排序后相邻去除法
+        /*
+        * 给传入数组排序，排序后相同值相邻，
+        * 然后遍历时,新数组只加入不与前一值重复的值。
+        * 会打乱原来数组的顺序
+        * */
+        function sortAndKillingNeighbours(array) {
+            array.sort();
+            var temp = [array[0]];
+            for (var i = 1; i < array.length; i++) {
+                if (array[i] != temp[temp.length - 1]) {
+                    temp.push(array[i]);
+                }
+            }
+            return temp;
+        }
+
+
+        /*数组下标法
+        * 还是得调用“indexOf”性能跟方法1差不多，
+        * 实现思路：如果当前数组的第i项在当前数组中第一次出现的位置不是i，
+        * 那么表示第i项是重复的，忽略掉。否则存入结果数组。
+        * */
+        function ArraySubscriptionMethod(array) {
+            var temp = [];
+            for (var i = 0; i < array.length; i++) {
+                //如果当前数组的第i项在当前数组中第一次出现的位置是i，才存入数组；否则代表是重复的
+                if (array.indexOf(array[i]) == i) {
+                    temp.push(array[i])
+                }
+            }
+            return temp;
+        }
+
+        // 思路：获取没重复的最右一值放入新数组
+        /*
+        * 推荐的方法
+        *
+        * 方法的实现代码相当酷炫，
+        * 实现思路：获取没重复的最右一值放入新数组。
+        * （检测到有重复值时终止当前循环同时进入顶层循环的下一轮判断）*/
+        function uniq(array) {
+            var temp = [];
+            var index = [];
+            var l = array.length;
+            for (var i = 0; i < l; i++) {
+                for (var j = i + 1; j < l; j++) {
+                    if (array[i] === array[j]) {
+                        i++;
+                        j = i;
+                    }
+                }
+                temp.push(array[i]);
+                index.push(i);
+            }
+            console.log(index);
+            return temp;
+        }
+
+
+
+
+
+        //为显示代码按钮循环绑定 鼠标划入划出事件
+        var flog = document.getElementsByClassName("one-show-style").length - 1
+        for (let i = 0; i <= flog; i++) {
+            let x = "show-code-" + i;
+            document.getElementById(x).onmouseover = function () {
+                document.getElementsByClassName(this.dataset.my)[0].classList.remove("displaynone");
+                document.getElementById(x).classList.add("one-show-style2");
+
+            }
+            document.getElementById(x).onmouseout = function () {
+                document.getElementsByClassName(this.dataset.my)[0].classList.add("displaynone");
+                document.getElementById(x).classList.remove("one-show-style2");
+
+            }
+        }
+
+        document.getElementById("one-button").onclick = function () {
+            var string = "第 1 种： " + es6set(array).toString()
+            document.getElementById("one-input").value = string;
+        }
+        document.getElementById("two-button").onclick = function () {
+            var string = "第 2 种： " + SimplestArrayReduplication(array).toString()
+            document.getElementById("one-input").value = string;
+        }
+        document.getElementById("3-button").onclick = function () {
+            var string = "第 3 种： " + sortAndKillingNeighbours(array).toString()
+            document.getElementById("one-input").value = string;
+        }
+        document.getElementById("4-button").onclick = function () {
+            var string = "第 4 种： " + ArraySubscriptionMethod(array).toString()
+            document.getElementById("one-input").value = string;
+        }
+        document.getElementById("5-button").onclick = function () {
+            var string = "第 5 种： " + uniq(array).toString()
+            document.getElementById("one-input").value = string;
+        }
+
 
     </script>
 

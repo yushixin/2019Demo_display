@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        img {
+            border: 0px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box{
+            width: 752px;
+            height: 500px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #img-div{
+            height: 450px;
+            width: 752px;
+        }
+        #img-div img{
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        #img-div .show{
+            display: block;
+        }
+
+
+        #box ul{
+            width: 200px;
+            height: 50px;
+            position:absolute;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        #box ul li{
+            flex: 1;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px 0 0 5px;
+            border: 2px solid;
+        }
+        #box ul .show-li{
+
+            background: black;
+            color: aliceblue;
+        }
+
+
+        #arrows {
+            width: 100px;
+            height: 50px;
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        #arrows div{
+            flex: 1;
+        }
+        #arrows img{
+            width: 100%;
+            height: 100%;
+        }
+        .gogogo{
+            position: absolute;
+            bottom: 0;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="img-div">
+            <img class="img show" src="./img/1.png" alt="">
+            <img class="img" src="./img/2.png" alt="">
+            <img class="img" src="./img/3.png" alt="">
+            <img class="img" src="./img/4.png" alt="">
+        </div>
+        <ul id="tab">
+            <li class="show-li">1</li>
+            <li class="">2</li>
+            <li class="">3</li>
+            <li class="">4</li>
+        </ul>
+        <div id="arrows">
+            <div id="prev"><img src="./img/left.svg" alt=""></div>
+            <div id="next"><img src="./img/right.svg" alt=""></div>
+        </div>
+        <div class="gogogo">左边可以点击，右边鼠标划入</div>
+    </div>
+
+
+    <script>
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var img = document.getElementsByClassName("img");
+        var oTab = document.getElementById('tab');
+        var li = oTab.getElementsByTagName('li');
+
+
+        var iNow = 0;
+
+        for(var i=0;i<li.length;i++) {
+            li[i].index = i;
+            li[i].onmouseover = function(){
+                iNow = this.index;
+
+                changeImg();
+            }
+        }
+        prev.onclick = next.onclick = function(){
+            if(this == next){
+                iNow++;
+                if(iNow == img.length){
+                    iNow = 0;
+                }
+            }else{
+                iNow--;
+                if(iNow == -1){
+                    iNow = img.length - 1;
+                }
+            }
+            changeImg();
+        }
+        function changeImg(){
+            for(let i = 0; i <img.length; i++ ){
+                img[i].classList.remove("show");
+                li[i].classList.remove("show-li")
+            }
+            img[iNow].classList.add ("show");
+            li[iNow].classList.add("show-li")
+
+        }
+
+
+    
+    </script>
+</body>
+
+</html>

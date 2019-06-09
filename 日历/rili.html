@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 300px;
+            background: #b8f1ed;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #top {
+            flex: 1;
+            font-size: 30px;
+        }
+
+        #bottom {
+            flex: 4;
+            margin: 20px;
+            background: #ef5464;
+            font-size: 50px;
+            color: azure;
+
+        }
+
+        .juzhong {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="top" class="juzhong"></div>
+        <div id="bottom" class="juzhong"></div>
+    </div>
+    <script>
+        window.onload = function () {
+            var top = document.getElementById("top");
+            var bottom = document.getElementById("bottom");
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            top.innerHTML = year+"-"+month+"-"+day;
+            bottom.innerHTML = day;
+        }
+    </script>
+</body>
+
+</html>

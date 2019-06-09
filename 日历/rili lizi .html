@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS简单日历</title>
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+    <style>
+        #dateInput {
+            background: #33CCCC;
+            color: white;
+            font-weight: bold;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 1em;
+        }
+
+        #calendar {
+            max-width: 450px;
+            margin: 0 auto;
+            background: #5CCCCC;
+            padding: 1em;
+        }
+
+        #back {
+            float: left;
+        }
+
+        #forward {
+            float: right;
+        }
+
+        #cur {
+            color: white;
+            font-size: 120%;
+            position: relative;
+            left: 30%;
+        }
+        img{
+            width: 30px;
+            height: 30px;
+        }
+        table {
+            max-width: 450px;
+            margin: 0 auto;
+            color: white;
+            padding: 1em;
+
+        }
+
+        th,
+        td {
+            width: 50px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid white;
+        }
+
+        th {
+            background-color: #009999;
+        }
+
+        .now {
+            background-color: #006363;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="dateInput">
+            <label>日期：(格式：yyyy-mm-dd)</label>
+            <input type="text" id="check">
+            <input type="button" id="changeDate" value="查询">
+        </div>
+        <div id="calendar">
+            <div id="calendarHeader">
+                <div>
+                    <img id="back" src="./img/left.svg">
+                    <span id="cur"></span>
+                    <img id="forward" src="./img/right.svg">
+                </div>
+            </div>
+            <div id="calendarTable">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                            <th>日</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var y, m;
+
+        function addEvent(func) {
+            var old = window.onload;
+            if (typeof old === "function") {
+                old();
+                func();
+            } else {
+                window.onload = func;
+            }
+        }
+
+
+        //设置日历的标题
+        function setCalendarTitle(obj) {
+            var year = obj.getFullYear();
+            var month = obj.getMonth() + 1;
+            var title = "" + year + "年" + month + "月";
+            y = year;
+            m = month;
+            var set = document.getElementById('cur');
+            if (set.childNodes.length > 0)
+                set.removeChild(set.childNodes[0]);
+            var txt = document.createTextNode(title);
+            set.appendChild(txt);
+            var now = new Date(year, month - 1, 1);
+            calculateDay(now);
+        }
+
+        //计算当前月份有几天，第一天是星期几
+        function is_leap(year) {
+            return (year % 100 == 0 ? res = (year % 400 == 0 ? 1 : 0) : res = (year % 4 == 0 ? 1 : 0));
+        }
+
+        function day(year) {
+            mDays = new Array(31, 28 + is_leap(year), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
+            return mDays;
+        }
+
+        function calculateDay(obj) {
+            var dayArr = day(obj.getFullYear());
+            var dayNum = dayArr[obj.getMonth()];
+            var dayFirst = obj.getDay(); //0是星期天， 6是星期六
+            var firstRow;
+            if (dayFirst != 0) {
+                firstRow = 8 - dayFirst;//第一行有日期的单元格个数,从右边数
+            } else {
+                firstRow = 1;
+            }
+            var firstRowBlank = 7 - firstRow; //第一行空的个数
+            var lastRow = (dayNum - firstRow) % 7; //最后一个有日期的单元格个数
+            var lastRowBlank = 7 - lastRow;
+            var RowNum = (dayNum - firstRow - lastRow) / 7 + 2;
+            renderCalendar(RowNum, firstRow, firstRowBlank, lastRow, lastRowBlank);
+        }
+
+        function renderCalendar(RowNum, firstRow, firstRowBlank, lastRow, lastRowBlank) {
+            var tbody = document.getElementsByTagName('tbody')[0];
+            var tr = tbody.getElementsByTagName("tr");
+            var len = tr.length;
+            if (len > 1) {
+                for (var index = 1; index < len; index++) {
+                    tbody.removeChild(tr[1]);
+                }
+            }
+            var i = 1;
+            var j = 1;
+            for (; i <= RowNum; i++) {
+                if (i == 1) {
+                    var row = document.createElement("tr");
+                    while (firstRowBlank > 0) {
+                        var blank = document.createElement("td");
+                        row.appendChild(blank);
+                        firstRowBlank--;
+                    }
+                    while (firstRow > 0) {
+                        var date = document.createElement("td");
+                        var txt = document.createTextNode(j);
+                        date.appendChild(txt);
+                        row.appendChild(date);
+                        j++;
+                        firstRow--;
+                    }
+                    tbody.appendChild(row);
+                } else if (i == RowNum && lastRow > 0) {
+                    var row = document.createElement("tr");
+                    while (lastRow > 0) {
+                        var txt = document.createTextNode(j);
+                        var date = document.createElement("td");
+                        date.appendChild(txt);
+                        row.appendChild(date);
+                        j++;
+                        lastRow--;
+                    }
+                    while (lastRowBlank > 0) {
+                        var blank = document.createElement("td");
+                        row.appendChild(blank);
+                        lastRowBlank--;
+                    }
+                    tbody.appendChild(row);
+                } else {
+                    var day = 7;
+                    var row = document.createElement("tr");
+                    while (day > 0) {
+                        var date = document.createElement("td");
+                        var txt = document.createTextNode(j);
+                        date.appendChild(txt);
+                        row.appendChild(date);
+                        j++;
+                        day--;
+                    }
+                    tbody.appendChild(row);
+                }
+            }
+        }
+
+        //读取系统当前时间，设置
+        function initiate() {
+            var now = new Date();
+            setCalendarTitle(now);
+        }
+
+        function checkCalendar() {
+            var button = document.getElementById('changeDate');
+            button.onclick = function () {
+                var date = document.getElementById("check").value;
+                var newDate = new Date(Date.parse(date));
+                setCalendarTitle(newDate);
+            }
+        }
+
+        function forwardMoth() {
+            var forward = document.getElementById("forward");
+            forward.onclick = function () {
+                var year = y;
+                var month = m;
+                if ((month + 1) <= 12) {
+                    var newDate = new Date(year, month, 1);
+                    setCalendarTitle(newDate);
+                } else {
+                    var newDate = new Date(year + 1, 0, 1);
+                    setCalendarTitle(newDate);
+                }
+            }
+        }
+
+        function backMonth() {
+            var back = document.getElementById("back");
+            back.onclick = function () {
+                var year = y;
+                var month = m;
+                if ((month - 1) >= 1) {
+                    var newDate = new Date(year, month - 2, 1);
+                    setCalendarTitle(newDate);
+                    m = month - 1;
+                } else {
+                    var newDate = new Date(year - 1, 11, 1);
+                    setCalendarTitle(newDate);
+                    m = 12;
+                }
+            }
+        }
+
+        addEvent(initiate());
+        addEvent(checkCalendar());
+        addEvent(forwardMoth());
+        addEvent(backMonth());
+
+
+    </script>
+</body>
+
+</html>

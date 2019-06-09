@@ -23,11 +23,26 @@
         <li><a href="./一层HTML实现凹凸/aotu.html">《CSS世界》 一层html实现一个凹 凸</a></li>
         <li><a href="./数组去重/1.html">数组去重的几种实现</a></li>
         <li><a href="./css画三角形/Triangle.html">用css画一个三角形</a></li>
-        <li><a href="./轮播图/轮播图1.html">最简单的轮播图</a></li>
+        <li id="lunbotu-li">轮播图
+            <ul id="lunbotu-li-nextul" style="display: none">
+                <li><a href="./轮播图/轮播图1.html">轮播图1</a></li>
+                <li><a href="./轮播图/轮播图2.html">轮播图2</a></li>
+            </ul>
+        </li>
 
         <li><a href="./pyixia.html">未完待续。。。</a></li>
 
     </ul>
+
+    <script>
+        document.getElementById("lunbotu-li").onclick = () => {
+            if (document.getElementById("lunbotu-li-nextul").style.display == "none") {
+                document.getElementById("lunbotu-li-nextul").style.display = "block";
+            } else {
+                document.getElementById("lunbotu-li-nextul").style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>

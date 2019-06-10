@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+
+    <script>
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            canvas.width = "400";
+            canvas.height = "400";
+            var context = canvas.getContext("2d");
+            context.beginPath();
+            context.moveTo(300, 100);
+            context.lineTo(300,300);
+            context.lineTo(200,200);
+
+            context.strokeStyle = "black";
+            context.lineWidth = "3";
+            context.fillStyle="#caff67";
+
+            context.stroke();
+            context.fill();
+            context.closePath();
+            context.stroke();
+
+
+        }
+    </script>
+</body>
+
+</html>

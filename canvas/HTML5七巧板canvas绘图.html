@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+            canvas.width = "400";
+            canvas.height = "400";
+            if (canvas.getContext("2d")) {
+                var context = canvas.getContext("2d");
+            }
+            else {
+                alert("当前浏览器不支持canvas，请更换浏览器后再试");
+            }
+            //把7个点的位置坐标和颜色存入一个数组
+            var points = [
+                { p: [{ x: 0, y: 0 }, { x: 400, y: 0 }, { x: 200, y: 200 }], color: "#caff67" },
+                { p: [{ x: 0, y: 0 }, { x: 200, y: 200 }, { x: 0, y: 400 }], color: "#67becf" },
+                { p: [{ x: 400, y: 0 }, { x: 400, y: 200 }, { x: 300, y: 300 }, { x: 300, y: 100 }], color: "#ef3d61" },
+                { p: [{ x: 300, y: 100 }, { x: 300, y: 300 }, { x: 200, y: 200 }], color: "#f9f51a" },
+                { p: [{ x: 200, y: 200 }, { x: 300, y: 300 }, { x: 200, y: 400 }, { x: 100, y: 300 }], color: "#a594c0" },
+                { p: [{ x: 100, y: 300 }, { x: 200, y: 400 }, { x: 0, y: 400 }], color: "#fa8ecc" },
+                { p: [{ x: 400, y: 200 }, { x: 400, y: 400 }, { x: 200, y: 400 }], color: "#f6ca29" }
+            ]
+
+            function draw() {
+                //遍历数组，以每个点为起点画图
+                for (var i = 0; i < points.length; i++) {
+                    context.beginPath();
+                    context.moveTo(points[i].p[0].x, points[i].p[0].y);
+                    for (var j = 0; j < points[i].p.length; j++) {
+                        context.lineTo(points[i].p[j].x, points[i].p[j].y);
+                    }
+                    context.lineTo(points[i].p[0].x, points[i].p[0].y);
+                    context.strokeStyle = "black";
+                    context.lineWidth = "3";
+                    context.fillStyle = points[i].color;
+                    context.stroke();
+                    context.fill();
+                    context.closePath();
+
+
+                }
+            }
+            draw();
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</body>
+</html>

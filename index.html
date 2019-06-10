@@ -9,33 +9,198 @@
     <style>
         a {
             text-decoration: none;
-            out-line: none;
-            color: #000;
+            color: #fff;
+        }
+
+        body,
+        html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: #24424D;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+
+
+        #first-screen {
+            height: 100vh;
+            background: url("./img/bg.jpg") no-repeat;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        #fs-header {
+            flex: 2;
+            display: flex;
+        }
+
+        #fs-header-index {
+            flex: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: #fff;
+        }
+
+        #fs-header-zw {
+            flex: 6;
+
+        }
+
+        #fs-header-tab {
+            flex: 6;
+            position: relative;
+
+        }
+
+        #fs-header-tab ul {
+
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fs-header-tab ul li {
+            float: left;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        #fs-content {
+            flex: 10;
+        }
+
+        #fs-content-textDiv {
+            margin-left: 100px;
+            width: 600px;
+            height: 600px;
+            position: relative;
+
+        }
+
+        #fs-content-textDiv>div:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            background: #000;
+            opacity: 0.4;
+            border-radius: 50px;
+        }
+
+        #fs-content-textDiv>div:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+
+        }
+
+
+
+        #fs-content-textDiv p {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        #fs-footer {
+            flex: 2;
         }
     </style>
 </head>
 
 <body>
-    <h1>男人就该干男人...</h1>
-    <h3>该干的事 Σ( ° △ °|||)︴</h3>
-    <ul>
-        <li><a href="./PicturesRotating/PicturesRotating.html">CSS3 图片旋转</a></li>
-        <li><a href="./一层HTML实现凹凸/aotu.html">《CSS世界》 一层html实现一个凹 凸</a></li>
-        <li><a href="./数组去重/1.html">数组去重的几种实现</a></li>
-        <li><a href="./css画三角形/Triangle.html">用css画一个三角形</a></li>
-        <li id="lunbotu-li">轮播图
-            <ul id="lunbotu-li-nextul" style="display: none">
-                <li><a href="./轮播图/轮播图1.html">轮播图1</a></li>
-                <li><a href="./轮播图/轮播图2.html">轮播图2</a></li>
+    <div id="box">
+        <div id="first-screen">
+            <div id="fs-header">
+                <div id="fs-header-index">你好！</div>
+                <div id="fs-header-zw"></div>
+                <div id="fs-header-tab">
+                    <ul>
+                        <li>
+                            <a href="https://github.com/yushixin">github</a>
+                        </li>
+                        <li>
+                            <a href="https://www.jianshu.com/u/0efe075b3616">简书</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="fs-content">
+                <div id="fs-content-textDiv">
+                    <div></div>
+                    <div>
+                        <div>
+                            <p>感谢你的到来</p>
+                            <p>我是于士心</p>
+                            <p>我毕业于2018年，目前正在找前端方面的实习</p>
+                            <p>这个网站是自己写的小demo，做一个展示</p>
+                            <p>右上角呢 是我的github地址和简书地址</p>
+                            <p>虽然现在还很贫瘠，但我会陆续丰满它们的</p>
+                            <p>我的联系方式：18545577154</p>
+                            <p>邮箱：wysx95@163.com</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="fs-footer"></div>
+        </div>
+        <div id="secend-screen">
+            <h1>男人就该干男人...</h1>
+            <h3>该干的事 Σ( ° △ °|||)︴</h3>
+            <ul>
+                <li><a href="./PicturesRotating/PicturesRotating.html">CSS3 图片旋转</a></li>
+                <li><a href="./一层HTML实现凹凸/aotu.html">《CSS世界》 一层html实现一个凹 凸</a></li>
+                <li><a href="./数组去重/1.html">数组去重的几种实现</a></li>
+                <li><a href="./css画三角形/Triangle.html">用css画一个三角形</a></li>
+                <li id="lunbotu-li">轮播图
+                    <ul id="lunbotu-li-nextul" style="display: none">
+                        <li><a href="./轮播图/轮播图1.html">轮播图1</a></li>
+                        <li><a href="./轮播图/轮播图2.html">轮播图2</a></li>
+                    </ul>
+                </li>
+                <li><a href="./日历/rili.html">简单的日历</a></li>
+                <li><a href="./canvas/HTML5七巧板canvas绘图.html">HTML5 canvas七巧板</a></li>
+                <li><a href="./canvas/aixin.html">彩虹雨和爱心（看不明白放着好看的）</a></li>
+
+                <li><a href="./pyixia.html">未完待续。。。</a></li>
+
             </ul>
-        </li>
-        <li><a href="./日历/rili.html">简单的日历</a></li>
-        <li><a href="./canvas/HTML5七巧板canvas绘图.html">HTML5 canvas七巧板</a></li>
-        <li><a href="./canvas/aixin.html">彩虹雨和爱心（看不明白放着好看的）</a></li>
+        </div>
+    </div>
 
-        <li><a href="./pyixia.html">未完待续。。。</a></li>
-
-    </ul>
 
     <script>
         document.getElementById("lunbotu-li").onclick = () => {

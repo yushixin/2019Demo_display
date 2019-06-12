@@ -73,15 +73,16 @@
             flex-direction: column-reverse;
         }
 
-        #fc-header-tab{
+        #fc-header-tab {
             margin: 50px 0 0 100px;
             height: 100px;
             display: flex;
             flex-direction: column-reverse;
-            
+
 
         }
-        #fc-header-tab ul{
+
+        #fc-header-tab ul {
             color: #fff;
             display: flex;
             flex-direction: row;
@@ -208,12 +209,124 @@
             align-items: center;
         }
 
-        #ss-content-show div {
+        #ss-content-showCSS {
+            overflow: hidden;
+            /* flex-wrap:nowrap; */
+            position: relative;
+
+        }
+
+        #ss-content-showJS {
+            overflow: hidden;
+            /* flex-wrap:nowrap; */
+            position: relative;
+
+        }
+
+        #ss-content-showH5 {
+            overflow: hidden;
+            /* flex-wrap:nowrap; */
+            position: relative;
+
+        }
+
+        #ss-content-showCSS-nextbox {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            width: 1600px;
+            height: 70%;
+        }
+
+        .ss-content-showCSS-nextbox-div {
+            width: 300px;
+            height: 100%;
+            margin-right: 10px;
+            background: white;
+            float: left;
+
+            border-radius: 30px;
+            border: #33a3dc solid 3px;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .showcss-header {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 150%;
+            background: #33a3dc;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .showcss-content {
+            flex: 9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcss-content-div1 {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div1 p {
+            /* width: 100%;
+            height: 100%; */
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div2 {
+            flex: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div2 img {
+            width: 80%;
+            height: 80%;
+        }
+
+        .showcss-content-div3 {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div3 a {
+            width: 50%;
+            height: 80%;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            background: #33a3dc;
+            font-size: 110%;
+            color: white;
+        }
+
+
+        .ss-content-show-div {
             width: 100%;
             height: 100%;
             margin: 30px;
             background: #b8f1ed;
             border-radius: 0 30px 30px 30px;
+
         }
 
         #ss-content-footer {
@@ -229,6 +342,7 @@
             height: 50px;
             background: #fff;
             border-radius: 30px;
+
         }
 
         #ss-content-footer div a {
@@ -238,6 +352,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
         }
     </style>
 </head>
@@ -252,8 +367,12 @@
                 <div id="fc-header-tab">
                     <ul>
                         <li>首页</li>
-                        <li>Github</li>
-                        <li>Jianshu</li>
+                        <li>
+                            <a href="https://github.com/yushixin">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://www.jianshu.com/u/0efe075b3616">Jianshu</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -277,17 +396,120 @@
                     <div id="showCSS" data-my="ss-content-showCSS" onclick="show(this.dataset.my)"
                         class="ss-content-tab-select">CSS/CSS3</div>
                     <div id="showJS" data-my="ss-content-showJS" onclick="show(this.dataset.my)">JS</div>
-                    <div id="showH5" data-my="ss-content-showH5" onclick="show(this.dataset.my)">H5</div>
+                    <div id="showH5" data-my="ss-content-showH5" onclick="show(this.dataset.my)">H5/HTML</div>
                 </div>
                 <div id="ss-content-show">
-                    <div id="ss-content-showCSS" class="">
-                        111
+                    <div id="ss-content-showCSS" class="ss-content-show-div">
+                        <div id="ss-content-showCSS-nextbox">
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">css画三角形</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>利用border画一个三角形</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./img/css三角形.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./css画三角形/Triangle.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-2" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">一个简单的日历</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>一个最简单的日历 仅能显示今天是几号</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./日历/Snipaste_2019-06-12_16-34-23.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./日历/rili.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-3" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">CSS3 canvas画七巧板</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>使用CSS3画线完成一个七巧板</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./canvas/Snipaste_2019-06-12_16-35-44.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./canvas/HTML5七巧板canvas绘图.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="ss-content-showJS" class="displaynone">
-                        222
+                    <div id="ss-content-showJS" class="ss-content-show-div displaynone">
+                        <div id="ss-content-showCSS-nextbox">
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">轮播图1</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>实现原理：使用定位将图片叠在一起，除了当前显示图片其余隐藏，也可以不隐藏通过修改层级实现</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./轮播图/轮播图1.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./轮播图/轮播图1.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">轮播图2</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>实现原理：通过浮动将图片横向排列，通过调整定位left属性实现滚动，还使用了transition 和 setTimeout实现了自动轮播和过度动画</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./轮播图/轮播图2.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./轮播图/轮播图2.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">数组去重</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>几种数组去重的方法</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./数组去重/Snipaste_2019-06-12_16-52-03.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./数组去重/1.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div id="ss-content-showH5" class="displaynone">
-                        333
+                    <div id="ss-content-showH5" class="ss-content-show-div displaynone">
+                        <div id="ss-content-showCSS-nextbox">
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">使用一层html结构实现凹凸</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>CSS世界中的例子</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./一层HTML实现凹凸/Snipaste_2019-06-12_16-45-40.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./一层HTML实现凹凸/aotu.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -378,7 +600,7 @@
 
         window.onload = function () {
             // 注意这里使用的ES6语法
-            setTimeout(() => window.scrollTo(0, 0), 150); // 返回页面顶部
+            // setTimeout(() => window.scrollTo(0, 0), 150); // 返回页面顶部
         };
 
         var showCSS = document.getElementById("showCSS");

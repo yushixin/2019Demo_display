@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YUSHIXIN的Demo展示</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        body,
+        html {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: #24424D;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .clear {
+            clear: both
+        }
+
+        .displaynone {
+            display: none;
+        }
+
+        #first-screen {
+            height: 100vh;
+            background: url("./img/Snipaste_2019-06-12_16-54-14.png") no-repeat center top;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #fc-header {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #fc-header-name {
+            height: 100px;
+            margin: 50px 50px 0 100px;
+            border-bottom: 3px solid #fff;
+            color: #fff;
+            font-size: 50px;
+            display: flex;
+            flex-direction: column-reverse;
+
+        }
+
+        #fc-header p {
+            margin-top: 50px;
+            height: 100px;
+            color: #fff;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        #fc-header-tab {
+            margin: 50px 0 0 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column-reverse;
+
+
+        }
+
+        #fc-header-tab ul {
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #fc-header-tab ul li {
+            margin-right: 10px;
+            font-size: 20px;
+
+        }
+
+        #fc-content {
+            flex: 8;
+        }
+
+        #fc-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fc-footer div {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fc-footer div img {
+            width: 100%;
+            height: 100%;
+            -webkit-animation-name: scaleDraw;
+            /*关键帧名称*/
+            -webkit-animation-timing-function: ease-in-out;
+            /*动画的速度曲线*/
+            -webkit-animation-iteration-count: infinite;
+            /*动画播放的次数*/
+            -webkit-animation-duration: 2s;
+            /*动画所花费的时间*/
+
+        }
+
+        @keyframes scaleDraw {
+
+            /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+            0% {
+                transform: scale(1);
+                /*开始为原始大小*/
+            }
+
+            25% {
+                transform: scale(1.1);
+                /*放大1.1倍*/
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+
+
+
+        #secend-screen {
+            padding: 0 100px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #ss-content {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #ss-content-header {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        #ss-content-tab {
+            width: 80%;
+            height: 30px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #ss-content-tab div {
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border-radius: 0 30px 0 0;
+            margin: 0 5px 0 0;
+        }
+
+        #ss-content-tab .ss-content-tab-select {
+            background: #00ffcc;
+        }
+
+        #ss-content-show {
+            width: 80%;
+            height: 60%;
+            background: #00ffcc;
+            border-radius: 0 30px 30px 30px;
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #ss-content-showCSS {
+            overflow: hidden;
+            /* flex-wrap:nowrap; */
+            position: relative;
+
+        }
+
+        #ss-content-showJS {
+            overflow: hidden;
+            /* flex-wrap:nowrap; */
+            position: relative;
+
+        }
+
+        #ss-content-showH5 {
+            overflow: hidden;
+            /* flex-wrap:nowrap; */
+            position: relative;
+
+        }
+
+        #ss-content-showCSS-nextbox {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            width: 1600px;
+            height: 70%;
+        }
+
+        .ss-content-showCSS-nextbox-div {
+            width: 300px;
+            height: 100%;
+            margin-right: 10px;
+            background: white;
+            float: left;
+
+            border-radius: 30px;
+            border: #33a3dc solid 3px;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .showcss-header {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 150%;
+            background: #33a3dc;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .showcss-content {
+            flex: 9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .showcss-content-div1 {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div1 p {
+            /* width: 100%;
+            height: 100%; */
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div2 {
+            flex: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div2 img {
+            width: 80%;
+            height: 80%;
+        }
+
+        .showcss-content-div3 {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .showcss-content-div3 a {
+            width: 50%;
+            height: 80%;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            background: #33a3dc;
+            font-size: 110%;
+            color: white;
+        }
+
+
+        .ss-content-show-div {
+            width: 100%;
+            height: 100%;
+            margin: 30px;
+            background: #b8f1ed;
+            border-radius: 0 30px 30px 30px;
+
+        }
+
+        #ss-content-footer {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #ss-content-footer div {
+            width: 100px;
+            height: 50px;
+            background: #fff;
+            border-radius: 30px;
+
+        }
+
+        #ss-content-footer div a {
+            color: #000;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box">
+        <div id="first-screen">
+            <div id="fc-header">
+                <div id="fc-header-name">YUSX</div>
+                <p>前端demo展示</p>
+                <div id="fc-header-tab">
+                    <ul>
+                        <li>首页</li>
+                        <li>
+                            <a href="https://github.com/yushixin">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://www.jianshu.com/u/0efe075b3616">Jianshu</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <div id="fc-content"></div>
+            <div id="fc-footer">
+                <div><img id="fc-footer-div" src="./img/双下箭头.svg" alt=""></div>
+            </div>
+        </div>
+
+        <div id="secend-screen">
+            <div id="ss-content">
+                <div id="ss-content-header">
+                    <h1>—— 作品展示 ——</h1>
+                    <p>用来展示一些写过的小demo！</p>
+
+                </div>
+                <div style="width: 100%;height:50px;"></div>
+                <div id="ss-content-tab">
+                    <div id="showCSS" data-my="ss-content-showCSS" onclick="show(this.dataset.my)"
+                        class="ss-content-tab-select">CSS/CSS3</div>
+                    <div id="showJS" data-my="ss-content-showJS" onclick="show(this.dataset.my)">JS</div>
+                    <div id="showH5" data-my="ss-content-showH5" onclick="show(this.dataset.my)">H5/HTML</div>
+                </div>
+                <div id="ss-content-show">
+                    <div id="ss-content-showCSS" class="ss-content-show-div">
+                        <div id="ss-content-showCSS-nextbox">
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">css画三角形</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>利用border画一个三角形</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./img/css三角形.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./css画三角形/Triangle.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-2" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">一个简单的日历</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>一个最简单的日历 仅能显示今天是几号</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./日历/Snipaste_2019-06-12_16-34-23.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./日历/rili.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-3" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">CSS3 canvas画七巧板</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>使用CSS3画线完成一个七巧板</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./canvas/Snipaste_2019-06-12_16-35-44.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./canvas/HTML5七巧板canvas绘图.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ss-content-showJS" class="ss-content-show-div displaynone">
+                        <div id="ss-content-showCSS-nextbox">
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">轮播图1</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>实现原理：使用定位将图片叠在一起，除了当前显示图片其余隐藏，也可以不隐藏通过修改层级实现</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./轮播图/轮播图1.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./轮播图/轮播图1.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">轮播图2</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>实现原理：通过浮动将图片横向排列，通过调整定位left属性实现滚动，还使用了transition 和 setTimeout实现了自动轮播和过度动画</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./轮播图/轮播图2.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./轮播图/轮播图2.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">数组去重</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>几种数组去重的方法</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./数组去重/Snipaste_2019-06-12_16-52-03.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./数组去重/1.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="ss-content-showH5" class="ss-content-show-div displaynone">
+                        <div id="ss-content-showCSS-nextbox">
+                            <div id="ss-content-showCSS-1" class="ss-content-showCSS-nextbox-div">
+                                <div class="showcss-header">使用一层html结构实现凹凸</div>
+                                <div class="showcss-content">
+                                    <div class="showcss-content-div1">
+                                        <p>CSS世界中的例子</p>
+                                    </div>
+                                    <div class="showcss-content-div2">
+                                        <img src="./一层HTML实现凹凸/Snipaste_2019-06-12_16-45-40.png" alt="">
+                                    </div>
+                                    <div class="showcss-content-div3">
+                                        <a href="./一层HTML实现凹凸/aotu.html">点击查看</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="ss-content-footer">
+                    <div><a href="#top">回到顶部</a></div>
+                </div>
+            </div>
+
+
+
+            <!-- <h1>男人就该干男人...</h1>
+            <h3>该干的事 Σ( ° △ °|||)︴</h3>
+            <ul>
+                <li><a href="./PicturesRotating/PicturesRotating.html">CSS3 图片旋转</a></li>
+                <li><a href="./一层HTML实现凹凸/aotu.html">《CSS世界》 一层html实现一个凹 凸</a></li>
+                <li><a href="./数组去重/1.html">数组去重的几种实现</a></li>
+                <li><a href="./css画三角形/Triangle.html">用css画一个三角形</a></li>
+                <li id="lunbotu-li">轮播图
+                    <ul id="lunbotu-li-nextul" style="display: none">
+                        <li><a href="./轮播图/轮播图1.html">轮播图1</a></li>
+                        <li><a href="./轮播图/轮播图2.html">轮播图2</a></li>
+                    </ul>
+                </li>
+                <li><a href="./日历/rili.html">简单的日历</a></li>
+                <li><a href="./canvas/HTML5七巧板canvas绘图.html">HTML5 canvas七巧板</a></li>
+                <li><a href="./canvas/aixin.html">彩虹雨和爱心（看不明白放着好看的）</a></li>
+                <li><a href="./pyixia.html">未完待续。。。</a></li>
+            </ul> -->
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var body = document.body,
+                html = document.documentElement;
+            var xxxx = document.getElementById("fc-footer-div")
+            var itv, height = document.body.offsetHeight;
+            var page = scrollTop() / height | 0;
+            //一个元素的 scrollTop 值是这个元素的顶部到视口可见内容（的顶部）的距离的度量。
+            //当一个元素的内容没有产生垂直方向的滚动条，那么它的 scrollTop 值为0。
+            //窗口大小改变事件
+            addEventListener("resize", onresize, false);//resize 是窗口改变大小的事件
+            onresize();
+            //滚轮事件
+            document.body.addEventListener(
+                "onwheel" in document ? "wheel" : "mousewheel",
+                function (e) {
+                    clearTimeout(itv);
+                    itv = setTimeout(function () {
+                        var delta = e.wheelDelta / 120 || -e.deltaY / 3;
+                        page -= delta;
+                        var max = (document.body.scrollHeight / height | 0) - 1;
+                        if (page < 0) return page = 0;
+                        if (page > max) return page = max;
+                        move();
+                    }, 100);
+                    e.preventDefault();
+                }
+            );
+            //平滑滚动
+            function move() {
+                var value = height * page;
+                var diff = scrollTop() - value;
+                (function callee() {
+                    diff = diff / 1.2 | 0;
+                    scrollTop(value + diff);
+                    if (diff) itv = setTimeout(callee, 16);
+                })();
+            };
+            //resize事件
+            function onresize() {
+                height = body.offsetHeight;//offsetHeight:它返回的高度是内容高+padding+边框
+                move();
+            };
+            //获取或设置scrollTop
+            function scrollTop(v) {
+                if (v == null) return Math.max(body.scrollTop, html.scrollTop);
+                else body.scrollTop = html.scrollTop = v;
+            };
+
+        });
+
+
+
+
+
+        window.onload = function () {
+            // 注意这里使用的ES6语法
+            // setTimeout(() => window.scrollTo(0, 0), 150); // 返回页面顶部
+        };
+
+        var showCSS = document.getElementById("showCSS");
+        var showJS = document.getElementById("showJS");
+        var showH5 = document.getElementById("showH5");
+        var sscontentshowCSS = document.getElementById("ss-content-showCSS");
+        var sscontentshowJS = document.getElementById("ss-content-showJS");
+        var sscontentshowH5 = document.getElementById("ss-content-showH5");
+
+        function allKill() {
+            showCSS.classList.remove("ss-content-tab-select");
+            showJS.classList.remove("ss-content-tab-select");
+            showH5.classList.remove("ss-content-tab-select");
+            sscontentshowCSS.classList.add("displaynone");
+            sscontentshowJS.classList.add("displaynone");
+            sscontentshowH5.classList.add("displaynone");
+
+        }
+        function show(x) {//这个函数用来控制下面内容的显示隐藏
+            var showID = x;
+            var tabID = x.split("-")[2];
+            allKill();
+            let targetShow = document.getElementById(showID);
+            let targetTab = document.getElementById(tabID);
+            targetTab.classList.add("ss-content-tab-select");
+            targetShow.classList.remove("displaynone");
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

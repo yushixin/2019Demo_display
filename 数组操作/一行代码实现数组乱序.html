@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 5, 6, 7];
+        arr.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
+
+
+        console.log(arr);
+
+
+
+        function quickSort(arr) {
+            if (arr.length <= 1) { return arr };
+            //选基准值，可以是任意位置
+            var key = Math.floor(arr.length / 2);
+            var keyValue = arr.splice(key, 1)[0];
+            //定义两个数组
+            var left = [];
+            var right = [];
+            for (var i = 0; i < arr.length; i++) {
+                //小于基准的方左边、大于右边
+                if (arr[i] < keyValue) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            //递归
+            return quickSort(left).concat([keyValue], quickSort(right));
+        }
+        var array = [5, 1, 6, 4, 10, 11, 15, 0, 2];
+        console.log(quickSort(array));
+  
+
+    </script>
+</body>
+
+</html>

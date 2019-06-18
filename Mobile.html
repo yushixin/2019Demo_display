@@ -11,7 +11,7 @@
             text-decoration: none;
             color: aqua;
         }
-
+        
         body,
         html {
             margin: 0;
@@ -19,20 +19,20 @@
             height: 100%;
             background: #111020;
         }
-
+        
         ul {
             padding: 0;
             margin: 0;
         }
-
+        
         li {
             list-style: none;
         }
-
+        
         p {
             margin: 0;
         }
-
+        
         #M-first-screen {
             width: 100vw;
             height: 100vh;
@@ -41,7 +41,7 @@
             display: flex;
             flex-direction: column;
         }
-
+        
         #Mfs-top {
             flex: 1;
             display: flex;
@@ -50,18 +50,18 @@
             align-items: center;
             position: relative;
         }
-
+        
         #Mfs-top img {
             width: 30%;
             height: 30%;
             border-radius: 50%;
         }
-
+        
         #p0 {
             color: #fff;
             font-size: 10vw
         }
-
+        
         #p1 {
             position: absolute;
             top: 30vh;
@@ -71,7 +71,7 @@
             color: #fff;
             font-size: 5vw;
         }
-
+        
         #p2 {
             position: absolute;
             top: 35vh;
@@ -81,18 +81,15 @@
             color: #fff;
             font-size: 5vw;
         }
-
-
-
+        
         #Mfs-bottom {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-
         }
-
+        
         #Mfs-bottom p {
             flex: 1;
             width: 100%;
@@ -102,15 +99,14 @@
             justify-content: center;
             align-items: center;
         }
-
+        
         #Mfs-bottom div {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-
         }
-
+        
         #Mfs-bottom div img {
             width: 50%;
             height: 50%;
@@ -123,33 +119,25 @@
             -webkit-animation-duration: 2s;
             /*动画所花费的时间*/
         }
-
-
-
-
-
+        
         @keyframes scaleDraw {
-
             /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
             0% {
                 transform: scale(1);
                 /*开始为原始大小*/
             }
-
             25% {
                 transform: scale(1.5);
                 /*放大1.1倍*/
             }
-
             50% {
                 transform: scale(1);
             }
-
             75% {
                 transform: scale(1.5);
             }
         }
-
+        
         #M-second-screen {
             width: 100vw;
             min-height: 100vh;
@@ -157,7 +145,7 @@
             flex-direction: column;
             align-items: center;
         }
-
+        
         #header {
             width: 100vw;
             height: 10vh;
@@ -168,21 +156,18 @@
             justify-content: center;
             font-size: 150%
         }
-
+        
         #content {
             flex: 1;
             color: aqua;
-
         }
-
+        
         #Mss-content-ul {
             width: 100vw;
-
         }
-
+        
         .Mss-content-ul-li {
             margin: 5% 5% 0 5%;
-
             width: 90%;
             min-height: 6vh;
             /* background: aqua; */
@@ -193,19 +178,19 @@
             justify-content: center;
             font-size: 150%;
         }
-
+        
         .Mss-content-ul-li ul {
             width: 80vw;
             font-size: 70%;
-            color:aqua;
+            color: aqua;
         }
-
+        
         #footer {
             width: 100vw;
             height: 10vh;
             /* background: red; */
         }
-
+        
         #footer a {
             width: 100%;
             height: 100%;
@@ -214,26 +199,26 @@
             justify-content: center;
             font-size: 150%;
         }
-        #me{
+        
+        #me {
             width: 100vw;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        #me-up{
+        
+        #me-up {
             width: 100vw;
             height: 6vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-
+        
         .displaynone {
             display: none;
         }
-        
     </style>
 </head>
 
@@ -244,8 +229,9 @@
                 <p id="p0">YUSX</p>
                 <img src="./img/雨女无瓜.jpg" alt="">
                 <p id="p1">
-                    < 你好!</p> <p id="p2"> 这是一个demo展示页面
-                </p>
+                    < 你好!</p>
+                        <p id="p2"> 这是一个demo展示页面
+                        </p>
 
             </div>
             <div id="Mfs-bottom">
@@ -253,8 +239,7 @@
                 </p>
 
                 <div>
-                    <a href="#hahaha"
-                        style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+                    <a href="#hahaha" style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
                         <img src="./img/双下箭头.svg" alt="">
 
                     </a>
@@ -278,13 +263,14 @@
                         <ul id="CSS" class="displaynone">
                             <li><a href="./css画三角形/Triangle.html"> 1 css画三角形</a></li>
                             <li><a href="./日历/rili.html">2 一个简单的日历</a></li>
-                            <li><a href="./canvas/HTML5七巧板canvas绘图.html">3 使用canvas画七巧板</a></li>
+                            <li><a href="./媒体查询/媒体查询.html">3 css3媒体查询简单练习</a></li>
+
                         </ul>
                     </li>
                     <li class="Mss-content-ul-li" data-my="HTML" onclick="show(this.dataset.my)">HTML/H5
                         <ul id="HTML" class="displaynone">
                             <li><a href="./一层HTML实现凹凸/aotu.html">1 一层HTML实现凹凸</a></li>
-                            <li>2</li>
+                            <li><a href="./canvas/HTML5七巧板canvas绘图.html">3 使用canvas画七巧板</a></li>
                             <li>3</li>
                         </ul>
                     </li>
@@ -312,7 +298,7 @@
                 <div>哈哈哈哈哈</div>
             </div>
             <div id="footer">
-                    <a href="#top">回到顶部</a>
+                <a href="#top">回到顶部</a>
 
             </div>
 
@@ -337,8 +323,6 @@
             }
 
         }
-
-
     </script>
 
 </body>

@@ -1,0 +1,106 @@
+.clear {
+    clear: both
+}
+
+.displaynone {
+    display: none;
+}
+
+#first-screen {
+    height: 100vh;
+    /* background: url("./img/Snipaste_2019-06-12_16-54-14.png") no-repeat center top; */
+    display: flex;
+    flex-direction: column;
+}
+
+#fc-header {
+    display: flex;
+    flex-direction: row;
+}
+
+#fc-header-name {
+    height: 100px;
+    margin: 50px 50px 0 100px;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    font-size: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#fc-header p {
+    margin-top: 50px;
+    height: 100px;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#fc-header-tab {
+    margin: 50px 0 0 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#fc-header-tab ul {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#fc-header-tab ul li {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+#fc-content {
+    flex: 8;
+}
+
+#fc-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fc-footer div {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fc-footer div img {
+    width: 100%;
+    height: 100%;
+    -webkit-animation-name: scaleDraw;
+    /*关键帧名称*/
+    -webkit-animation-timing-function: ease-in-out;
+    /*动画的速度曲线*/
+    -webkit-animation-iteration-count: infinite;
+    /*动画播放的次数*/
+    -webkit-animation-duration: 2s;
+    /*动画所花费的时间*/
+}
+
+@keyframes scaleDraw {
+    /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+    0% {
+        transform: scale(1);
+        /*开始为原始大小*/
+    }
+    25% {
+        transform: scale(1.1);
+        /*放大1.1倍*/
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.1);
+    }
+}

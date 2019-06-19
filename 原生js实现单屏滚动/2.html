@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .box {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .box .ul-star {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box" class="box" index='0'>
+
+        <div class="ul-star" style="background:red"></div>
+
+        <div class="ul-star" style="background:green"></div>
+
+        <div class="ul-star" style="background:grey"></div>
+
+        <div class="ul-star" style="background:blue"></div>
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    $("#box").on("mousewheel", function(ev) {　　　　
+        var hhs = ev.originalEvent.wheelDelta;　　　　
+        var fangx = hhs > 0 ? 1 : 0; //向下为负值
+        　　　　
+        var index = $("#box").attr("index");　　　　
+        var maxpage = $("#box div").size() - 1;　　　　
+        if (fangx) { //1,top为负值往下
+            　　　　　　
+            if (--index < 0) {　　　　　　　　
+                return　　　　　　
+            }　　　　
+        }　　　　
+        else {　　　　　　
+            if (++index > maxpage) {　　　　　　　　
+                return　　　　　　
+            }　　　　
+        }　　　　
+        if (!$(this).is(":animated")) {　　　　　　
+            $("#box").animate({
+                top: "-" + index + "00%"
+            }, 300)　　　　　　
+            $("#box").attr("index", index)　　　　
+        }　　
+    })
+</script>
+
+</html>

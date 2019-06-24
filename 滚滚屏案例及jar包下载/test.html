@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no, adress=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link type="text/css" rel="stylesheet" href="./css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="./css/index.css" />
+    <title></title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="scroller">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li id="a">5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <p>上面的容器是可以滚动的区域</p>
+    </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/iscroll.js"></script>
+    <script>
+        //IScroll会获取容器内的第一个子元素进行滚动，其它子元素会被忽略，且该子元素（scroller）必须有固定的高度（或宽度），在这里，即ID为scroller的元素可以滚动
+        var myScroll = new IScroll('#wrapper', {
+            mouseWheel: true, //鼠标滚轮支持
+            scrollbars: true, //滚动条支持
+            scrollY: true, //滚动方向（垂直）
+            scrollX: true, //滚动方向（水平）
+            bounce: true, //边界时的反弹动画，默认true
+            click: true, //IScroll默认禁止了点击事件，如需绑定点击事件，请将该参数值设为true
+            freeScroll: true, //当需要执行两个纬度上的滚动时（即横向、纵向都开启），设置该参数，默认为false
+            startX: 0, //滚动条开始的位置（横坐标）
+            startY: 0, //滚动条开始的位置（纵坐标）
+            tap: true, //设置为true时，允许为用户点击或者触摸（并没有滚动时）触发一个自定义事件，或者设置值为一个自定义事件名称的字符串
+            snap: 'li' //对齐（根据元素li对齐切割整个容器）
+        });
+
+        console.log(myScroll.options); //通过options对象访问myScroll实例的配置信息
+
+        //给li绑定点击事件
+        $('#scroller ul li').on('click', function() {
+            console.log($(this).html());
+        })
+
+        //绑定tap自定义事件
+        $('#wrapper').on('tap', function() {
+            console.log('开始滚动了');
+        })
+
+        myScroll.scrollTo(0, -250); //控制滚动条到任意的位置
+
+        myScroll.scrollBy(0, -10); //从当前位置向下滚动10个像素
+
+        //滚动到该元素的位置，第二个参数为时间，第三个第四个参数为偏移量（如果设置这两个参数为true，该元素将会显示在容器的中间）
+        myScroll.scrollToElement('#a', 1000, 0, 0);
+
+        //关于snap对齐后操作的方法
+        myScroll.goToPage(0, 5, 1000); //滚动到对齐后的第五页（即第五个li的位置）
+        myScroll.next(); //当前位置的下一页
+        myScroll.prev(); //当前位置的上一页
+
+        //IScroll需要知道容器确切的尺寸，如果容器大小发生了变化，需要使用刷新方法
+        myScroll.refresh();
+
+        //自定义事件
+        myScroll.on('scrollEnd', function() {
+            console.log('滚动结束');
+            console.log(this.x + '&' + this.y); //当前位置
+            console.log(this.directionX + '&' + this.directionY); //最后的方向
+            console.log(this.currentPage); //当前对齐捕获点
+        })
+
+        //销毁
+        //myScroll.destroy();
+
+        //当滚动到底部时的myScroll.x/y
+        console.log(myScroll.maxScrollX + '&' + myScroll.maxScrollY);
+    </script>
+</body>
+
+</html>

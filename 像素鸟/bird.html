@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #game {
+            width: 800px;
+            height: 600px;
+            background: url('./images/sky.png');
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #bird {
+            width: 34px;
+            height: 25px;
+            background: url('./images/birds.png') -8px -10px no-repeat;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+        <div id="bird"></div>
+    </div>
+    <script>
+        var game = document.getElementById("game");
+        var birdEle = document.getElementById("bird");
+
+        var sky = {
+                x: 0
+            }
+            //初始化小鸟对象
+        var bird = {
+                speedX: 5, //水平速度
+                speedY: 0, //垂直速度
+                x: birdEle.offsetLeft, //左上角距屏幕 左边框 的距离
+                y: birdEle.offsetTop, //左上角距屏幕 上边框 的距离
+            }
+            //设定一个运动装状态 用来终止游戏
+        var running = true;
+
+        //设置一个定时器让动画动起来
+        setInterval(function() {
+            if (running) {
+                sky.x -= 5;
+                game.style.backgroundPositionX = sky.x + "px"
+                bird.speedY += 1;
+                bird.y += bird.speedY;
+
+                //游戏终止机制 当小鸟触碰上边界和下边界时 running标志置为flase 终止游戏
+                if (bird.y <= 0) {
+                    running = false;
+                    bird.y = 0;
+                } else if (bird.y + birdEle.offsetHeight > 600) {
+                    running = false;
+                    bird.y = 600 - birdEle.offsetHeight;
+                }
+
+                birdEle.style.top = bird.y + 'px';
+            }
+        }, 30)
+
+        //点击屏幕拉起小鸟
+        document.onclick = function() {
+            bird.speedY = -10;
+        }
+    </script>
+</body>
+
+
+</html>

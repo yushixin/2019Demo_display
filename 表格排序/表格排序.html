@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ctn {
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+        
+        td,
+        th {
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <p>点击表头对列表进行排序</p>
+    <table id="ctn">
+
+    </table>
+
+</body>
+<script>
+    // 数据
+    var data = [{
+        name: '赵六',
+        age: 29,
+        num: 3,
+        score: 91
+    }, {
+        name: '李四',
+        age: 24,
+        num: 1,
+        score: 93
+    }, {
+        name: '王五',
+        age: 21,
+        num: 5,
+        score: 96
+    }, {
+        name: '钱八',
+        age: 26,
+        num: 4,
+        score: 97
+    }, {
+        name: '张三',
+        age: 22,
+        num: 2,
+        score: 99
+    }];
+    //初始化标题
+    function initTite() {
+        var thead = document.createElement("thead");
+        var tag = '<tr>' +
+            '<th type="name">姓名</th>' +
+            '<th type="age">年龄</th>' +
+            '<th type="num">学号</th>' +
+            '<th type="score">分数</th>' +
+            '</tr>';
+        thead.innerHTML = tag;
+        return thead;
+    }
+    // 初始化数据
+    function initTbody(data) {
+        var tbody = document.createElement('tbody');
+        var tag = '';
+        for (var i = 0; i < data.length; i++) {
+            tag += '<tr>' +
+                '<td>' + data[i].name + '</td>' +
+                '<td>' + data[i].age + '</td>' +
+                '<td>' + data[i].num + '</td>' +
+                '<td>' + data[i].score + '</td>' +
+                ' </tr>'
+        }
+        tbody.innerHTML = tag;
+        return tbody;
+    }
+    // 把主题和数据追加到页面
+    var ctn = document.getElementById("ctn");
+    var thead = initTite();
+    var tbody = initTbody(data);
+    ctn.appendChild(thead);
+    ctn.appendChild(tbody);
+
+
+    // 给th添加点击事件 (需要重新渲染tbody)
+    var ths = document.getElementsByTagName("th");
+    for (var i = 0; i < ths.length; i++) {
+        ths[i].onclick = function() {
+            var sortName = this.getAttribute("type");
+            this.flag = this.flag == -1 ? 1 : -1;
+            var _this = this;
+            data.sort(function(o1, o2) {
+                var n1 = o1[sortName];
+                var n2 = o2[sortName];
+                if (n1 > n2) {
+                    return _this.flag;
+                } else if (n1 < n2) {
+                    return -_this.flag;
+                } else {
+                    return 0;
+                }
+            });
+            var newTbody = initTbody(data);
+            var oldTbody = document.getElementsByTagName('tbody')[0];
+            ctn.replaceChild(newTbody, oldTbody);
+        }
+    }
+</script>
+
+</html>
